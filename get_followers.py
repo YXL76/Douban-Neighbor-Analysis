@@ -39,7 +39,7 @@ def write_to_file(num):
     file.close()
 
 
-def get_fans():
+def get_followers():
     # 目标用户友邻列表
     response = session.get(url=url, headers=headers)
     if response.status_code != 200:
@@ -56,4 +56,4 @@ def get_fans():
 
 
 if __name__ == '__main__':
-    get_fans()
+    get_followers()

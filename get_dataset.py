@@ -105,7 +105,7 @@ def get_user_info(uid=''):
     return row
 
 
-def write_to_file(uid=''):
+def write_dataset_file(uid=''):
     row = []
     row += get_user_info(uid)
     row += get_movie_info(uid)
@@ -114,7 +114,7 @@ def write_to_file(uid=''):
     return row
 
 
-def read_from_file():
+def read_uid_file():
     infile = open(uid_file)
     outfile = open(dataset_file, 'w', encoding='utf-8', newline='')
     csv_file = csv.writer(outfile, dialect='excel')
@@ -123,11 +123,11 @@ def read_from_file():
         line = infile.readline()
         uid = line[:-1]
         # print(uid)
-        csv_file.writerow(write_to_file(uid))
+        csv_file.writerow(write_dataset_file(uid))
         sleep(1)
     infile.close()
     outfile.close()
 
 
 if __name__ == '__main__':
-    read_from_file()
+    read_uid_file()
