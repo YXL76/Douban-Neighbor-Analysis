@@ -3,130 +3,114 @@ import requests
 from json import loads
 from time import sleep
 
-from settings import user_agent, uid_file, dataset_file
+from settings import user_agent
+from settings import uid_file
+from settings import dataset_file
+from settings import csv_title
 
 session = requests.Session()
 
 
-def get_book_info(uid=''):
-    url = 'https://m.douban.com/rexxar/api/v2/user/' + uid + '/collection_stats?type=book&for_mobile=1'
-    referer = 'https://m.douban.com/people/' + uid + '/book_charts'
-    headers = {
-        'Referer': referer,
+def get_movie_info(nuid=''):
+    nurl = 'https://m.douban.com/rexxar/api/v2/user/' + nuid + '/collection_stats?type=movie&for_mobile=1&ck=5Kvd'
+    nreferer = 'https://m.douban.com/people/' + nuid + '/movie_charts'
+    nheaders = {
+        'Referer': nreferer,
         'User-Agent': user_agent,
     }
-    response = session.get(url=url, headers=headers)
-    row = []
-    decoded = loads(response.text)
+    nresponse = session.get(url=nurl, headers=nheaders)
+    nrow = []
+    ndecoded = loads(nresponse.text)
     # print(decoded)
     try:
-        row.append(decoded['total_collections'])
+        nrow.append(ndecoded['total_collections'])
     except:
-        row.append('')
+        nrow.append('')
     try:
-        row.append(int(decoded['total_spent']))
+        nrow.append(int(ndecoded['total_spent']))
     except:
-        row.append('')
+        nrow.append('')
     try:
-        row.append(int(decoded['total_page']))
+        nrow.append(int(ndecoded['total_cost']))
     except:
-        row.append('')
+        nrow.append('')
     try:
-        row.append(round(decoded['monthly_avg'], 1))
+        nrow.append(round(ndecoded['weekly_avg'], 1))
     except:
-        row.append('')
+        nrow.append('')
+    try:
+        nrow.append(ndecoded['countries'][0]['name'])
+    except:
+        nrow.append('')
+    try:
+        nrow.append(ndecoded['countries'][1]['name'])
+    except:
+        nrow.append('')
+    try:
+        nrow.append(ndecoded['genres'][0]['name'])
+    except:
+        nrow.append('')
+    try:
+        nrow.append(ndecoded['genres'][1]['name'])
+    except:
+        nrow.append('')
+    try:
+        nrow.append(ndecoded['genres'][2]['name'])
+    except:
+        nrow.append('')
     # print(row)
-    return row
+    return nrow
 
 
-def get_movie_info(uid=''):
-    url = 'https://m.douban.com/rexxar/api/v2/user/' + uid + '/collection_stats?type=movie&for_mobile=1&ck=5Kvd'
-    referer = 'https://m.douban.com/people/' + uid + '/movie_charts'
-    headers = {
-        'Referer': referer,
+def get_user_info(nuid=''):
+    nurl = 'https://m.douban.com/rexxar/api/v2/user/' + nuid + '/archives_summary?for_mobile=1&ck=5Kvd'
+    nreferer = 'https://m.douban.com/people/' + nuid + '/subject_profile'
+    nheaders = {
+        'Referer': nreferer,
         'User-Agent': user_agent,
     }
-    response = session.get(url=url, headers=headers)
-    row = []
-    decoded = loads(response.text)
+    nresponse = session.get(url=nurl, headers=nheaders)
+    ndecoded = loads(nresponse.text)
     # print(decoded)
+    nrow = []
     try:
-        row.append(decoded['total_collections'])
+        nrow.append(ndecoded['user']['loc']['name'])
     except:
-        row.append('')
+        nrow.append('')
     try:
-        row.append(int(decoded['total_spent']))
+        nrow.append(ndecoded['user']['statuses_count'])
     except:
-        row.append('')
+        nrow.append('')
     try:
-        row.append(int(decoded['total_cost']))
+        nrow.append(ndecoded['user']['reg_time'][:4])
     except:
-        row.append('')
+        nrow.append('')
     try:
-        row.append(round(decoded['weekly_avg'], 1))
+        nrow.append(ndecoded['user']['gender'])
     except:
-        row.append('')
+        nrow.append('')
     # print(row)
-    return row
+    return nrow
 
 
-def get_user_info(uid=''):
-    url = 'https://m.douban.com/rexxar/api/v2/user/' + uid + '/archives_summary?for_mobile=1&ck=5Kvd'
-    referer = 'https://m.douban.com/people/' + uid + '/subject_profile'
-    headers = {
-        'Referer': referer,
-        'User-Agent': user_agent,
-    }
-    response = session.get(url=url, headers=headers)
-    decoded = loads(response.text)
-    # print(decoded)
-    row = []
-    try:
-        row.append(decoded['user']['followers_count'])
-    except:
-        row.append('')
-    try:
-        row.append(decoded['user']['loc']['name'])
-    except:
-        row.append('')
-    try:
-        row.append(decoded['user']['statuses_count'])
-    except:
-        row.append('')
-    try:
-        row.append(decoded['user']['reg_time'][:4])
-    except:
-        row.append('')
-    try:
-        row.append(decoded['user']['gender'])
-    except:
-        row.append('')
-    # print(row)
-    return row
-
-
-def write_dataset_file(uid=''):
-    row = []
-    row += get_user_info(uid)
-    row += get_movie_info(uid)
-    row += get_book_info(uid)
-    print(row)
-    return row
+def get_info(nuid=''):
+    nrow = []
+    nrow += get_user_info(nuid)
+    nrow += get_movie_info(nuid)
+    print(nrow)
+    return nrow
 
 
 def read_uid_file():
-    infile = open(uid_file)
-    outfile = open(dataset_file, 'w', encoding='utf-8', newline='')
-    csv_file = csv.writer(outfile, dialect='excel')
-    line = 'temporary'
-    while line:
-        line = infile.readline()
-        uid = line[:-1]
-        # print(uid)
-        csv_file.writerow(write_dataset_file(uid))
-        sleep(1)
-    infile.close()
-    outfile.close()
+    with open(uid_file) as infile:
+        with open(dataset_file, 'w', encoding='utf-8', newline='') as outfile:
+            csv_file = csv.writer(outfile, dialect='excel')
+            csv_file.writerow(csv_title)
+            for line in infile:
+                uid = line[:-1]
+                # print(uid)
+                csv_file.writerow(get_info(uid))
+                sleep(2)
 
 
 if __name__ == '__main__':

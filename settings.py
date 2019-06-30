@@ -22,22 +22,32 @@ username = 'YXL-76'
 
 api_key = 'u6DsT4njZAgUNrNuOQ43'
 
-# YXL76
-# iPi6ANmUdKPAchO08O7l
+# 备用账号
+# username: YXL76
+# api_key: iPi6ANmUdKPAchO08O7l
 
 mapbox_access_token = 'pk.eyJ1IjoieXhsNzYiLCJhIjoiY2p4Z3lndzAxMDhyZTN4bXZlZXl4YzAyeSJ9.9gwBwf3n51J8ZXL-M7Nz8A'
+
+csv_title = ['loc', 'status', 'year', 'sex', 'collect', 'spend', 'cost', 'avg', 'country1', 'country2', 'type1', 'type2']
 
 status_range = (0, 500, 1000, 1500, 2000)
 
 reg_year_range = (2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019)
 
-reg_year_color = ('lightblue1', 'lightcoral', 'lightcyan1', 'lightgoldenrod1', 'lightgrey', 'lightpink', 'lightsalmon1', 'lightseagreen', 'lightyellow1', 'yellowgreen', 'gold', 'lightskyblue', 'whitesmoke', 'violetred1', 'aquamarine1', 'magenta')
+country_range = (
+    '中国大陆', '美国', '香港', '台湾', '日本', '韩国', '英国', '法国', '德国', '意大利', '西班牙',
+    '印度', '泰国', '俄罗斯', '伊朗', '加拿大', '澳大利亚', '爱尔兰', '瑞典', '巴西', '丹麦')
 
-gender_range = ('男', '女', '未知')
+genre_range = (
+    '剧情', '喜剧', '动作', '爱情', '科幻', '动画', '悬疑', '惊悚', '恐怖', '犯罪', '同性', '音乐', '歌舞',
+    '传记', '历史', '战争', '西部', '奇幻', '冒险', '灾难', '武侠', '情色', '家庭', '短片', '纪录片')
 
-loc_range = ('广东', '北京', '江苏', '上海', '浙江', '四川', '山东', '河南', '湖北', '湖南', '福建', '陕西', '重庆', '辽宁',
-             '河北', '安徽', '天津', '江西', '黑龙江', '广西', '吉林', '山西', '云南', '贵州', '内蒙古', '新疆', '甘肃', '海南',
-             '宁夏', '青海', '西藏', '香港', '澳门', '台湾', '国外', '未知')
+year_range = ('2019', '2018', '2010年代', '2000年代', '90年代', '80年代', '70年代', '60年代', '更早')
+
+loc_range = (
+    '广东', '北京', '江苏', '上海', '浙江', '四川', '山东', '河南', '湖北', '湖南', '福建', '陕西', '重庆', '辽宁',
+    '河北', '安徽', '天津', '江西', '黑龙江', '广西', '吉林', '山西', '云南', '贵州', '内蒙古', '新疆', '甘肃', '海南',
+    '宁夏', '青海', '西藏', '香港', '澳门', '台湾', '国外', '未知')
 
 loc_id = {
     '广东': 0,
