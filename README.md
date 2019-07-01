@@ -20,6 +20,7 @@
 
 ## 目录
 
+```
 .
 ├── analysis(plotly)
 │   ├── analysis.ipynb
@@ -39,6 +40,7 @@
     ├── settings.py
     ├── spider.ipynb
     └── spider.py
+```
 
 ## 项目逻辑
 
