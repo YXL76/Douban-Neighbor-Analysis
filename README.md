@@ -55,6 +55,8 @@
   - 获取方法
 
     ![](/Tutorial/Tutorial-1.png)
+  
+- 运行完`spider.py`或`spider.ipynb`得到数据集`dataset_file.csv`
 
 ### Part2 数据分析
 
@@ -62,6 +64,7 @@
 
 - 该部分程序位于`analysis`文件夹中，提供了`.ipynb`文件，基于两种不同的包
 - 由于两种包提供的图表有一定的差别，所以处理方法有些许不同，推荐使用`plotly`
+- 使用前请将数据集`dataset_file.csv`复制到对应的文件夹下
 
 #### plotly
 
@@ -70,13 +73,13 @@
 
 #### pyecharts
 
-- 不需要联网
+- 不需要联网，可无限次使用
 - 可导出文件，或直接在`notebook`中显示
 
 ## 样例
 
 - 样例位于`example`文件夹中
-- 其中的`dataset_file.csv`可直接用于数据分析，其所对应的配置文件位于`example\spider\settings.py`
+- 其中的`dataset_file.csv`可直接用于数据分析，其所对应的`spider`配置文件位于`example\spider\settings.py`
 - `result`文件夹中包含了把`example\dataset_file.csv`作为数据集后分别使用两种包分析得到的结果
 
 ## 相关链接
