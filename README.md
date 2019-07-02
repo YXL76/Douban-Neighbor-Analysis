@@ -54,7 +54,7 @@
 
   - 获取方法
 
-    ![](/Tutorial/Tutorial-1.png)
+    ![Tutorial](/Tutorial/Tutorial-2.png)
   
 - 运行完`spider.py`或`spider.ipynb`得到数据集`dataset_file.csv`
 
@@ -68,7 +68,8 @@
 
 #### plotly
 
-- 需要联网，绘制地图需要`Mapbox`的`access token`，绘制图表需要`plotly `的`api key`，请在`settings.py`中设置
+- 需要联网，请确保能够访问[plot.ly](https://plot.ly/)
+- 绘制地图需要`Mapbox`的`access token`，绘制图表需要`plotly `的`api key`，请在`settings.py`中设置
 - 每日有使用次数限制，如果出现`TimeOut`的错误，请尝试更换网络
 
 #### pyecharts
