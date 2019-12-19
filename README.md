@@ -54,7 +54,7 @@
 
   - 获取方法
 
-    ![Tutorial](/Tutorial/Tutorial-2.png)
+    ![Tutorial](/Tutorial/Tutorial-1.png)
   
 - 运行完`spider.py`或`spider.ipynb`得到数据集`dataset_file.csv`
 
