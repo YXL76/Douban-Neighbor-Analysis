@@ -20,7 +20,7 @@
 
 ## 目录
 
-```
+```bash
 .
 ├── analysis(plotly)
 │   ├── analysis.ipynb
@@ -46,7 +46,7 @@
 
 ### Part1 数据获取
 
-<font color='red'> *若已有数据集可以跳过此部分，从Part2开始* </font>
+<font color='red'> _若已有数据集可以跳过此部分，从 Part2 开始_ </font>
 
 - 该部分程序位于`spider`文件夹中，提供了`.py`和`.ipynb`文件
 
@@ -54,13 +54,13 @@
 
   - 获取方法
 
-    ![Tutorial](/Tutorial/Tutorial-1.png)
-  
+    ![Tutorial](./Tutorial/Tutorial-1.png)
+
 - 运行完`spider.py`或`spider.ipynb`得到数据集`dataset_file.csv`
 
 ### Part2 数据分析
 
-<font color='red'> *若已有数据集可以直接从此开始* </font>
+<font color='red'> _若已有数据集可以直接从此开始_ </font>
 
 - 该部分程序位于`analysis`文件夹中，提供了`.ipynb`文件，基于两种不同的包
 - 由于两种包提供的图表有一定的差别，所以处理方法有些许不同，推荐使用`plotly`
@@ -69,7 +69,7 @@
 #### plotly
 
 - 需要联网，请确保能够访问[plot.ly](https://plot.ly/)
-- 绘制地图需要`Mapbox`的`access token`，绘制图表需要`plotly `的`api key`，请在`settings.py`中设置
+- 绘制地图需要`Mapbox`的`access token`，绘制图表需要`plotly`的`api key`，请在`settings.py`中设置
 - 每日有使用次数限制，如果出现`TimeOut`的错误，请尝试更换网络
 
 #### pyecharts
